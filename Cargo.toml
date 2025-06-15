@@ -12,6 +12,7 @@ keywords = ["aes256-gcm", "wasm", "webassembly"]
 [dev-dependencies]
 benchmark-simple = "0.1.10"
 aes-gcm = "0.10.3"
+wasm-bindgen = "0.2.100"      
 
 [[bench]]
 name = "benchmark"
@@ -19,3 +20,6 @@ harness = false
 
 [lib]
 crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "0.2.100"

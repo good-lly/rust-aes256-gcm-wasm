@@ -10,7 +10,7 @@
 //! let msg = b"hello";
 //! let ad = b"ad";
 //! let ciphertext = encrypt(msg, ad, &key, nonce);
-//! let plaintext = decrypt(ciphertext, ad, &key, nonce).unwrap();
+//! let plaintext = decrypt(ciphertext, aad, &key, nonce).unwrap();
 //! assert_eq!(plaintext, msg);
 //! ```
 
@@ -132,6 +132,7 @@ pub fn encrypt_detached(
 /// let ad = b"ad";
 /// let ciphertext = encrypt(msg, ad, &key, nonce);
 /// ```
+
 pub fn encrypt(msg: impl AsRef<[u8]>, ad: impl AsRef<[u8]>, key: &Key, nonce: Nonce) -> Vec<u8> {
     let mut res = encrypt_detached(msg, ad, key, nonce);
     res.0.extend_from_slice(res.1.as_ref());
